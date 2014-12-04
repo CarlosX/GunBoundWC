@@ -70,18 +70,18 @@ namespace BrokenServer
             #endregion
 
             //Systems.Crypto.Initialize();
-            //Systems.Server net = new Systems.Server();
-            //net.OnConnect += new Systems.Server.dConnect(pro._OnClientConnect);
-            //net.OnError += new Systems.Server.dError(pro._ServerError);
+            Systems.Server net = new Systems.Server();
+            net.OnConnect += new Systems.Server.dConnect(pro._OnClientConnect);
+            net.OnError += new Systems.Server.dError(pro._ServerError);
 
-            //try
-            //{
-            //    net.Start(LSIP, LSPort);
-            //}
-            //catch (Exception ex)
-            //{
-            //    LogConsole.Show(LogType.ERROR, "Starting Server error: {0}", ex);
-            //}
+            try
+            {
+                net.Start(LSIP, LSPort);
+            }
+            catch (Exception ex)
+            {
+                LogConsole.Show(LogType.ERROR, "Starting Server error: {0}", ex);
+            }
 
 
 
@@ -104,6 +104,32 @@ namespace BrokenServer
                 Console.Title = string.Concat(totalMemory);
                 Thread.Sleep(1500);
             }
+        }
+
+        public void _OnReceiveData(Systems.Decode de, Systems.Client ed)
+        {
+            //Systems.OpCode(de, ed);
+        }
+
+        public void _OnClientConnect(ref object de, Systems.Client net)
+        {
+            //de = new Systems(net);
+        }
+
+        private void _ServerError(Exception ex)
+        {
+
+        }
+
+        public void _OnClientDisconnect(object o)
+        {
+            try
+            {
+                Systems s = (Systems)o;
+                //s.client.clientSocket.Close();
+                //s.client.Displose();
+            }
+            catch { }
         }
     }
 }
