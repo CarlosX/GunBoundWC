@@ -113,7 +113,7 @@ namespace BrokenServer
 
         public void _OnClientConnect(ref object de, Systems.Client net)
         {
-            //de = new Systems(net);
+            de = new Systems(net);
         }
 
         private void _ServerError(Exception ex)
@@ -126,8 +126,8 @@ namespace BrokenServer
             try
             {
                 Systems s = (Systems)o;
-                //s.client.clientSocket.Close();
-                //s.client.Displose();
+                s.client.clientSocket.Close();
+                s.client.Displose();
             }
             catch { }
         }

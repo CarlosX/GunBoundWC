@@ -12,8 +12,8 @@ namespace BrokenServer
         public class Crypto
         {
             private Rijndael m_DynamicRijndael;
-            private static readonly byte[] m_StaticKey = new byte[] { 0x00 };
-            private static readonly byte[] m_StaticKey2 = new byte[] { 0x00 };
+            private static readonly byte[] m_StaticKey = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+            private static readonly byte[] m_StaticKey2 = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
             private static Rijndael m_StaticRijndael;
 
             public Crypto(string login, string pass, uint dword)
