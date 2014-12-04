@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\INI.cs" />
+    <Compile Include="Util\LogConsole.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
