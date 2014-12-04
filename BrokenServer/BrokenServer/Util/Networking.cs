@@ -113,11 +113,11 @@ namespace BrokenServer
             public int bufCount = 0;
             public byte[] buffer = new byte[MAX_BUFFER];
             public byte[] tmpbuf = new byte[128];
-            /*private Crypto m_Crypto;
+            private Crypto m_Crypto;
             private ControlCode m_SendControlCode = new ControlCode(true);
-            private ControlCode m_RecvControlCode = new ControlCode(false);*/
+            private ControlCode m_RecvControlCode = new ControlCode(false);
             private bool m_FirstPacketSent = false;
-           // private ByteQueue _queue = new ByteQueue();
+            private ByteQueue _queue = new ByteQueue();
             private int m_Version;
             private uint m_AuthDWORD;
             //private UserInfo m_UserInfo;
@@ -272,10 +272,10 @@ namespace BrokenServer
                 m_SendControlCode = null;
                 m_RecvControlCode = null;
                 _queue = null;
-                m_UserInfo = null;
+                //m_UserInfo = null;
             }
 
-            /*public ByteQueue queue
+            public ByteQueue queue
             {
                 get { return _queue; }
             }
@@ -289,7 +289,7 @@ namespace BrokenServer
             public ControlCode SendControlCode
             {
                 get { return this.m_SendControlCode; }
-            }*/
+            }
 
             public bool FirstPacketSent
             {

@@ -69,7 +69,7 @@ namespace BrokenServer
             }
             #endregion
 
-            //Systems.Crypto.Initialize();
+            Systems.Crypto.Initialize();
             Systems.Server net = new Systems.Server();
             net.OnConnect += new Systems.Server.dConnect(pro._OnClientConnect);
             net.OnError += new Systems.Server.dError(pro._ServerError);
@@ -108,7 +108,7 @@ namespace BrokenServer
 
         public void _OnReceiveData(Systems.Decode de, Systems.Client ed)
         {
-            //Systems.OpCode(de, ed);
+            Systems.OpCode(de, ed);
         }
 
         public void _OnClientConnect(ref object de, Systems.Client net)
