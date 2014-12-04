@@ -22,8 +22,8 @@ namespace BrokenServer
             Systems.Ini ini = null;
 
             #region Default Settings
-            int LSPort = 00000;
-            int IPCPort = 00000;
+            int LSPort = 8372;
+            int IPCPort = 8500;
             string LSIP = "127.0.0.1";
             string IPCIP = "127.0.0.1";
 
@@ -40,11 +40,11 @@ namespace BrokenServer
                 if (File.Exists(Environment.CurrentDirectory + @"\Settings\Settings.ini"))
                 {
                     ini = new Systems.Ini(Environment.CurrentDirectory + @"\Settings\Settings.ini");
-                    LSPort = Convert.ToInt32(ini.GetValue("Server", "port", 12345));
+                    LSPort = Convert.ToInt32(ini.GetValue("Server", "port", 8372));
                     LSIP = ini.GetValue("Server", "ip", "127.0.0.1").ToString();
                     VER = ini.GetValue("Server", "ver", 1);
 
-                    IPCPort = Convert.ToInt32(ini.GetValue("IPC", "port", 40706));
+                    IPCPort = Convert.ToInt32(ini.GetValue("IPC", "port", 8500));
                     IPCIP = ini.GetValue("IPC", "ip", "127.0.0.1").ToString();
                     DEBUG = Convert.ToBoolean(ini.GetValue("CONSOLE", "debug", "false"));
 
@@ -73,6 +73,9 @@ namespace BrokenServer
             Systems.Server net = new Systems.Server();
             net.OnConnect += new Systems.Server.dConnect(pro._OnClientConnect);
             net.OnError += new Systems.Server.dError(pro._ServerError);
+
+            Systems.Client.OnReceiveData += new Systems.Client.dReceive(pro._OnReceiveData);
+            Systems.Client.OnDisconnect += new Systems.Client.dDisconnect(pro._OnClientDisconnect);
 
             try
             {
@@ -113,6 +116,7 @@ namespace BrokenServer
 
         public void _OnClientConnect(ref object de, Systems.Client net)
         {
+            LogConsole.Show(LogType.DEBUG, "_OnClientConnect");
             de = new Systems(net);
         }
 

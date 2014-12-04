@@ -157,11 +157,11 @@ namespace BrokenServer
                             if (bufCount >= 4) // a minimum of 4 byte is required for us
                             {
                                 Decode de = new Decode(buffer); // only get get the size first
-                                
+                                LogConsole.Show(LogType.DEBUG, "Decode()");
                                 if (bufCount >= (de.dataSize-2))  // that's a complete packet, lets call the handler
                                 {
                                     de = new Decode(wSocket, buffer, this, Packets);  // build up the Decode structure for next step
-
+                                    LogConsole.Show(LogType.DEBUG, "Decode()->dataSize");
                                     queue.Enqueue(buffer, 0, bufCount);
                                     OnReceiveData(de, this); // call the handling routine
                                     bufCount -= (de.dataSize); // decrease buffer-counter

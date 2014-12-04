@@ -17,20 +17,24 @@ namespace BrokenServer
         {
             try
             {
-                /////////////////
-                ////////////////
-                ///////////////
-                //////////////
-                /////////////
-                ////////////
-                ///////////
-                //////////
-                /////////
-                ////////
-                ///////
-                //////
-                /////
-                ////
+                LogConsole.Show(LogType.DEBUG, "OpCode()");
+                Systems sys = (Systems)state.Packet;
+                sys.PacketInformation = state;
+
+                ByteQueue queue = ed.queue;
+                
+                int length = queue.Length;
+                LogConsole.Show(LogType.DEBUG, "OpCode() {0}", length);
+                while ((length > 0))
+                {
+                    byte[] buffer;
+                    int packetID = queue.GetPacketID();
+                    int packetLength = queue.GetPacketLength();
+                    int packetControlCode = queue.GetPacketControlCode();
+
+                    LogConsole.Show(LogType.DEBUG, "PacketControl: {0} PacketID: 0x{1:X2} Length: {2}", packetControlCode, packetID, packetLength );
+                    length = 0;
+                }
             }
             catch (Exception)
             {
