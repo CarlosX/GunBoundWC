@@ -30,7 +30,8 @@ namespace BrokenServer
                 string aSCIIZ = Utils.GetASCIIZ(xd2);
                 LogConsole.Show(LogType.DEBUG, "Login: {0}", aSCIIZ);
 
-                state.Send(new LoginResponse(LoginResponseCode.Prohibited, -1, "HAHAHAHAHAHAHAHA!!"));
+                //state.Send(new LoginResponse(LoginResponseCode.Prohibited, -1, "HAHAHAHAHAHAHAHA!!"));
+                state.Send(new LoginResponse(LoginResponseCode.LoginSuccessful));
             }
 
             public static PacketHandler GetHandler(int PacketID)
