@@ -14,13 +14,24 @@ namespace BrokenServer
         {
             static PacketHandlers()
             {
-                Register(0x0000, 0, true, new OnPacketReceive(PacketHandlers.Empty));
+                Register(0x1310, 0, true, new OnPacketReceive(PacketHandlers.Pack1));
             }
             public static void Empty(Client state, PacketReader2 pv)
             {
 
             }
-            
+
+            public static void Pack1(Client state, PacketReader2 pv)
+            {
+                LogConsole.Show(LogType.DEBUG, "OpCode->Pack1()");
+                byte[] unk1 = pv.ReadBytes(0x10);
+                byte[] buffer2 = pv.ReadBytes(0x10);
+                byte[] xd2 = Crypto.DecryptStaticBuffer(unk1);
+                string aSCIIZ = Utils.GetASCIIZ(xd2);
+                LogConsole.Show(LogType.DEBUG, "Login: {0}", aSCIIZ);
+
+                state.Send(new LoginResponse(LoginResponseCode.Prohibited, -1, "HAHAHAHAHAHAHAHA!!"));
+            }
 
             public static PacketHandler GetHandler(int PacketID)
             {

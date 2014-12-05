@@ -149,7 +149,7 @@ namespace BrokenServer
                 this.m_Stream.Write(buffer, offset, count);
             }
 
-            /*public void WriteASCIIFixed(string value, int length)
+            public void WriteASCIIFixed(string value, int length)
             {
                 if (value == null)
                 {
@@ -166,9 +166,9 @@ namespace BrokenServer
                     this.m_Stream.Write(bytes, 0, bytes.Length);
                     this.Fill(length - bytes.Length);
                 }
-            }*/
+            }
 
-            /*public void WriteASCIIZ(string value)
+            public void WriteASCIIZ(string value)
             {
                 if (value == null)
                 {
@@ -178,7 +178,7 @@ namespace BrokenServer
                 byte[] bytes = Utils.GetBytes(value);
                 this.m_Stream.Write(bytes, 0, bytes.Length);
                 this.m_Stream.WriteByte(0);
-            }*/
+            }
 
             public long Length
             {

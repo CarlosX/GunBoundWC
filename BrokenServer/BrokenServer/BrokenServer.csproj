@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\FunctionOpcode.cs" />
+    <Compile Include="Clases\LoginResponse.cs" />
     <Compile Include="Clases\Packet.cs" />
     <Compile Include="Clases\PacketHandler.cs" />
     <Compile Include="Clases\PacketHandlers.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Util\Definitions.cs" />
     <Compile Include="Util\INI.cs" />
     <Compile Include="Util\LogConsole.cs" />
+    <Compile Include="Util\LoginResponseCode.cs" />
     <Compile Include="Util\Networking.cs" />
     <Compile Include="Util\PacketReader.cs" />
     <Compile Include="Util\PacketReader2.cs" />
