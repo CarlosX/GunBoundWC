@@ -120,7 +120,7 @@ namespace BrokenServer
             private ByteQueue _queue = new ByteQueue();
             private int m_Version;
             private uint m_AuthDWORD;
-            //private UserInfo m_UserInfo;
+            private UserInfo m_UserInfo;
 
             public void ReceiveData(IAsyncResult ar)
             {
@@ -272,7 +272,7 @@ namespace BrokenServer
                 m_SendControlCode = null;
                 m_RecvControlCode = null;
                 _queue = null;
-                //m_UserInfo = null;
+                m_UserInfo = null;
             }
 
             public ByteQueue queue
@@ -296,11 +296,11 @@ namespace BrokenServer
                 get { return this.m_FirstPacketSent; }
             }
 
-            /*public UserInfo UserInfo
+            public UserInfo UserInfo
             {
                 get { return this.m_UserInfo; }
                 set { this.m_UserInfo = value; }
-            }*/
+            }
 
             public int Version
             {

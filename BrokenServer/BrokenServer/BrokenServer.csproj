@@ -50,6 +50,7 @@
     <Compile Include="Clases\Packet.cs" />
     <Compile Include="Clases\PacketHandler.cs" />
     <Compile Include="Clases\PacketHandlers.cs" />
+    <Compile Include="Clases\UserInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\BufferPool.cs" />
