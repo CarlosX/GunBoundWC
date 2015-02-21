@@ -24,23 +24,32 @@ namespace BrokenServer
             public static void Pack1(Client state, PacketReader2 pv)
             {
                 LogConsole.Show(LogType.DEBUG, "OpCode->Pack1()");
-                byte[] unk1 = pv.ReadBytes(0x10);
+
+                byte[] desuser = pv.ReadBytes(0x10);
+                byte[] bffuser = Crypto.DecryptStaticBuffer(desuser);
+                string username = Utils.GetASCIIZ(bffuser);
+                LogConsole.Show(LogType.DEBUG, "Username: {0}", username);
+
                 byte[] buffer2 = pv.ReadBytes(0x10);
-                byte[] xd2 = Crypto.DecryptStaticBuffer(unk1);
-                string aSCIIZ = Utils.GetASCIIZ(xd2);
-                LogConsole.Show(LogType.DEBUG, "Login: {0}", aSCIIZ);
 
 
-                state.UserInfo = new UserInfo(aSCIIZ, state);
+                state.UserInfo = new UserInfo(username, state);
                 if (state.UserInfo.Exist() >= 1)
                 {
-                    PacketReader2 reader = new PacketReader2(Crypto.DecryptStaticBuffer(buffer2), 0x10);
+                    byte[] buff2 = Crypto.DecryptStaticBuffer(buffer2);
+                    LogConsole.HexDump(buff2, "", 16);
+
+                    PacketReader2 reader = new PacketReader2(buff2, 0x10);
                     reader.Seek(0, SeekOrigin.Begin);
                     state.AuthDWORD = reader.ReadUInt32();
+                    LogConsole.Show(LogType.DEBUG, "AuthDWORD: {0}", state.AuthDWORD );
 
-                    state.Crypto = new Crypto(aSCIIZ, state.UserInfo.Password, state.AuthDWORD);
+                    //state.Crypto = new Crypto(username, state.UserInfo.Password, state.AuthDWORD);
+                    state.Crypto = new Crypto(username, "123456", state.AuthDWORD);
                     byte[] input = pv.ReadBytes(0x20);
                     byte[] output = new byte[0x18];
+
+                    LogConsole.HexDump(input, "", 16);
 
                     if (!state.Crypto.PacketDecrypt(input, ref output, 0x1012))
                     {
@@ -51,8 +60,11 @@ namespace BrokenServer
                     {
                         reader = new PacketReader2(output, output.Length);
                         reader.Seek(0, SeekOrigin.Begin);
-                        string password = Utils.GetASCIIZ(reader.ReadBytes(20));
+                        byte[] buffpas = reader.ReadBytes(20);
+                        string password = Utils.GetASCIIZ(buffpas);
                         uint num = reader.ReadUInt32();
+                        LogConsole.Show(LogType.DEBUG, "password: {0}", password);
+
                         if (state.UserInfo.Password == password)
                         {
                             if (num >= Program.VER)

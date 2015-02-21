@@ -67,6 +67,7 @@
     <Compile Include="Util\PacketReader2.cs" />
     <Compile Include="Util\PacketWriter.cs" />
     <Compile Include="Util\PacketWriter2.cs" />
+    <Compile Include="Util\SpecialSHA.cs" />
     <Compile Include="Util\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
