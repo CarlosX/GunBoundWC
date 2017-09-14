@@ -21,4 +21,4 @@ Copyright (C) CarlosX
   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
   
   
-  Special credits to Owaran for SHA1 and struct gb
+ #### Special credits to Owaran for SHA1 and struct gb
