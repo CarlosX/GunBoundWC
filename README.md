@@ -3,9 +3,6 @@ GunBoundWCEmu
 
 Copyright (C) CarlosX
 
-#### If you want to help me :)
-  [![ScreenShot](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](http://tinyurl.com/DonationX)
-
   GunBoundWCEmu is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
